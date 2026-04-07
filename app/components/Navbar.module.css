@@ -1,0 +1,72 @@
+.navbar {
+  background: rgba(6, 11, 20, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(18px);
+}
+
+.logo {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #e24b4a;
+  display: inline-block;
+}
+
+.links {
+  display: flex;
+  gap: 28px;
+}
+
+.link {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.72);
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: #ffffff;
+}
+
+.ctaBtn {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  background: #4f62ff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 20px;
+  transition: background 0.2s ease;
+}
+
+.ctaBtn:hover {
+  background: #3751e8;
+}
+
+@media (max-width: 720px) {
+  .navbar {
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 18px 24px;
+  }
+
+  .links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
