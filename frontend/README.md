@@ -67,7 +67,7 @@ This app sends job data to a prediction backend. Configure the backend URL in an
 Example in a `.env.local` file:
 
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:8000
+NEXT_PUBLIC_API_URL=http://localhost:5000
 ```
 
 ## Project Structure
