@@ -10,6 +10,8 @@ A complete full-stack application for identifying fraudulent job listings using 
 
 **Backend API (Render):** [https://fake-job-posting-detector-tn3a.onrender.com](https://fake-job-posting-detector-tn3a.onrender.com)
 
+**Medium Article:** [https://fake-job-posting-detector-tn3a.onrender.com/docs](https://fake-job-posting-detector-tn3a.onrender.com/docs)
+
 **API Documentation:** [https://fake-job-posting-detector-tn3a.onrender.com/docs](https://fake-job-posting-detector-tn3a.onrender.com/docs)
 
 ---

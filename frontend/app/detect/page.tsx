@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import styles from './detect.module.css'
 
@@ -17,10 +17,11 @@ export default function DetectPage() {
     description: '',
     requirements: '',
     benefits: '',
+    email: '',
   })
 
   function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
     setForm({ ...form, [e.target.name]: e.target.value })
     setError('')
@@ -39,6 +40,7 @@ export default function DetectPage() {
           'No qualifications needed. Must have internet access. Willing to work independently. No experience required whatsoever.',
         benefits:
           'Work from home. Weekly pay. Unlimited earning potential. Be your own boss. No boss looking over your shoulder.',
+        email: '',
       })
     } else {
       setForm({
@@ -52,6 +54,7 @@ export default function DetectPage() {
           '3+ years of React experience. Strong understanding of TypeScript, CSS, and web performance. Experience with testing frameworks. Bachelor\'s degree in CS or equivalent experience.',
         benefits:
           'Comprehensive health insurance. 401(k) with matching. Equity package. $3,000 annual learning budget. 20 days PTO. Remote-friendly.',
+        email: '',
       })
     }
     setError('')
@@ -66,11 +69,12 @@ export default function DetectPage() {
       description: '',
       requirements: '',
       benefits: '',
+      email: '',
     })
     setError('')
   }
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault()
 
     if (!form.title.trim() || !form.description.trim()) {
@@ -211,6 +215,17 @@ export default function DetectPage() {
                   className={styles.input}
                 />
               </div>
+            <div className={styles.field}>
+              <label className={styles.label}>Contact email (optional)</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  placeholder="e.g. hr@company.com"
+                  className={styles.input}
+                />
+            </div>
 
               {/* Progress indicator */}
               <div className={styles.progressBox}>
@@ -219,13 +234,13 @@ export default function DetectPage() {
                     Form completeness
                   </span>
                   <span className={styles.progressNum}>
-                    {Math.round((filled / 7) * 100)}%
+                    {Math.round((filled / 8) * 100)}%
                   </span>
                 </div>
                 <div className={styles.progressBg}>
                   <div
                     className={styles.progressBar}
-                    style={{ width: `${(filled / 7) * 100}%` }}
+                    style={{ width: `${(filled / 8) * 100}%` }}
                   ></div>
                 </div>
                 <p className={styles.progressHint}>

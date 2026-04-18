@@ -64,6 +64,9 @@ function ResultContent() {
   const riskColor = isFake
     ? confidencePct >= 85 ? styles.riskHigh : styles.riskMed
     : styles.riskLow
+  const trust_score = parseInt(params.get('trust_score') || '50')
+  const risk_level  = params.get('risk_level') as 'low' | 'medium' | 'high'
+  const flags       = JSON.parse(params.get('flags') || '[]') as string[]
 
   return (
     <div className={styles.page}>

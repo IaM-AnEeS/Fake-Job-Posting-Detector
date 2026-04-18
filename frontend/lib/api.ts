@@ -9,10 +9,14 @@ export type JobForm = {
 }
 
 export type PredictionResult = {
-  prediction: 'fake' | 'real'
-  confidence: number
+  prediction:  'fake' | 'real'
+  confidence:  number
+  trust_score: number
+  risk_level:  'low' | 'medium' | 'high'
+  flags:       string[]
+  label:       string
+  message:     string
 }
-
 export async function detectJob(form: JobForm): Promise<PredictionResult> {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/predict`, {
     method: 'POST',
