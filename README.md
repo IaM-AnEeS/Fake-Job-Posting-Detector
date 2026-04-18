@@ -1,157 +1,255 @@
 # Fake Job Detector
 
-A polished **Next.js** frontend for detecting fake job listings. This repository contains the UI, pages, and styles used to collect posting details, analyze them, and show results in a modern dashboard-style interface.
+A complete full-stack application for identifying fraudulent job listings using machine learning. This repository includes a polished **Next.js** frontend, a production-ready **FastAPI** backend, and a training pipeline for building the fraud detection model.
 
-## Prerequisites
+---
 
-Before you start, install the following tools:
+## 🚀 Project Overview
 
-- **Git**: version control for cloning the repository.
-- **Node.js**: version 18 or newer is recommended.
-- **npm**: comes with Node.js for dependency management.
-- **Visual Studio Code**: recommended editor for JavaScript/TypeScript and React development.
+Fake Job Detector helps users verify job postings by analyzing title, company details, salary, description, requirements, and benefits. The frontend collects user input and displays a polished verdict, while the backend powers the prediction with an ML model trained on real and fake job postings.
 
-## Quickstart
+### What it delivers
 
-1. Clone the repository:
+- Real-time fake-job detection with confidence scoring
+- Modern landing page, form flow, and result dashboard
+- API endpoints for health checks and predictions
+- Model training pipeline with TF-IDF + Logistic Regression
+- Local development and deployment support
 
-```bash
-git clone <repository-url>
-cd fake-job-detector
+---
+
+## 🧩 Tech Stack
+
+- Frontend: `Next.js 16`, `React 19`, `TypeScript`, `ESLint`
+- Backend: `FastAPI`, `uvicorn`, `Pydantic`
+- ML: `scikit-learn`, `joblib`, `pandas`, `numpy`
+- Dataset: `training/fake_job_postings.csv`
+
+---
+
+## 📁 Repository Structure
+
+### Frontend
+
+- `frontend/package.json` — Next.js app scripts and dependencies
+- `frontend/app/page.tsx` — homepage and product overview
+- `frontend/app/detect/page.tsx` — job posting analysis form
+- `frontend/app/result/page.tsx` — prediction results and guidance
+- `frontend/lib/api.ts` — API helper for backend requests
+- `frontend/app/**/*.module.css` — scoped component styles
+
+### Backend
+
+- `backend/main.py` — FastAPI server and prediction endpoints
+- `backend/requirements.txt` — Python dependency manifest
+- `backend/render.yaml` — Render deployment configuration
+- `backend/model/model.pkl` — serialized ML model output (generated)
+
+### Model training
+
+- `backend/training/train.py` — training pipeline for the classification model
+- `backend/training/evaluate.py` — evaluation helper (same file in this repo)
+- `backend/training/fake_job_postings.csv` — labeled job posting dataset
+
+---
+
+## ✨ Features
+
+- Predicts whether a job posting is `fake` or `real`
+- Shows a confidence score with risk-level categorization
+- Supports job title, company, location, salary, description, requirements, benefits
+- Includes example fill buttons for quick testing
+- Presents actionable recommendations for users
+- Backend health checks and ready-to-deploy Render configuration
+
+---
+
+## 🏗️ Backend Details
+
+### API endpoints
+
+| Endpoint | Method | Purpose |
+|---|---|---|
+| `/` | GET | Basic health status and model loader state |
+| `/health` | GET | Detailed health response with model status |
+| `/predict` | POST | Returns prediction, confidence, label, and message |
+
+### Prediction contract
+
+Request body:
+
+```json
+{
+  "title": "Software Engineer",
+  "company": "Tech Company",
+  "location": "Remote",
+  "salary": "$120k/year",
+  "description": "Build features and ship production code.",
+  "requirements": "3+ years experience in React.",
+  "benefits": "Health insurance, remote work."
+}
 ```
 
-2. Install dependencies:
+Response body:
+
+```json
+{
+  "prediction": "real",
+  "confidence": 0.92,
+  "label": "Real Job",
+  "message": "This job posting appears to be legitimate."
+}
+```
+
+### Backend implementation notes
+
+- `backend/main.py` loads `model/model.pkl` on startup
+- User input is cleaned with `clean_text()` before prediction
+- The app uses CORS with `allow_origins=["*"]` for easy frontend integration
+- If model is missing, startup fails with an informative error
+
+---
+
+## 🧠 Model Training Pipeline
+
+The training script builds a text classification pipeline from the fake job dataset.
+
+### Core pipeline
+
+- Text cleaning: lowercasing, HTML tag removal, special character stripping
+- Feature extraction: `TfidfVectorizer` with 1-2 grams, `min_df=2`, English stop words
+- Classifier: `LogisticRegression` with `class_weight='balanced'`
+
+### How to train the model
 
 ```bash
+cd backend
+python training/train.py
+```
+
+This produces the serialized model at:
+
+```bash
+backend/model/model.pkl
+```
+
+### Training outputs
+
+- Console metrics: accuracy, classification report, confusion matrix
+- Sample prediction examples for fake and real jobs
+
+---
+
+## 💻 Local Development
+
+### 1. Start the backend
+
+```bash
+cd backend
+python -m pip install -r requirements.txt
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
+
+Verify backend:
+
+```bash
+curl http://localhost:8000/health
+```
+
+### 2. Start the frontend
+
+```bash
+cd frontend
 npm install
-```
-
-3. Start the development server:
-
-```bash
 npm run dev
 ```
 
-4. Open the app in your browser:
-
-- `http://localhost:3000`
-
-## Build and Production
-
-To create an optimized production build:
+Open the app at:
 
 ```bash
-npm run build
+http://localhost:3000
 ```
 
-To run the production server locally after building:
+### 3. Configure backend URL
 
-```bash
-npm start
-```
-
-## Linting
-
-Run the ESLint checks with:
-
-```bash
-npm run lint
-```
-
-## Environment Variables
-
-This app sends job data to a prediction backend. Configure the backend URL in an environment variable:
-
-- `NEXT_PUBLIC_API_URL`
-
-Example in a `.env.local` file:
+Create `frontend/.env.local` with:
 
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:8000
 ```
 
-## Project Structure
+> The frontend uses `NEXT_PUBLIC_API_URL` to route prediction requests to the backend.
 
-### Root files
+---
 
-- `package.json`: dependency list and npm scripts.
-- `tsconfig.json`: TypeScript compiler configuration.
-- `next.config.ts`: Next.js configuration and build settings.
-- `eslint.config.mjs`: linting rules for the project.
-- `README.md`: project documentation.
+## 🧪 Frontend Flow
 
-### `app/`
+1. The homepage introduces the product with hero content and trust signals.
+2. The `/detect` page captures posting details using a multi-field form.
+3. Users can populate either a fake or real example instantly.
+4. The app submits the data to `/predict` and redirects to `/result`.
+5. The results page displays a verdict, confidence gauge, warning flags, and recommended next steps.
 
-This folder contains the Next.js app router pages and shared application layout.
+---
 
-- `app/layout.tsx`:
-  - Defines the root HTML structure for every page.
-  - Includes shared layout elements like navigation and the main content wrapper.
-  - Configures metadata such as page title and description.
+## 📦 Deployment
 
-- `app/page.tsx`:
-  - The homepage for the application.
-  - Renders hero content, feature sections, stats, example cards, and CTA buttons.
-  - Uses `page.module.css` for page-specific styling.
+### Backend
 
-- `app/page.module.css`:
-  - Styles applied only to the homepage.
-  - Defines the look and feel for hero, stats, sections, cards, and buttons.
+The provided `backend/render.yaml` config is ready for Render deployment.
 
-- `app/globals.css`:
-  - Global CSS resets and theme styles.
-  - Sets base typography, body background, and shared element styles.
+Start command:
 
-- `app/components/Navbar.tsx` and `Navbar.module.css`:
-  - The site navigation component.
-  - Contains brand styling and navigation links.
+```yaml
+uvicorn main:app --host 0.0.0.0 --port $PORT
+```
 
-- `app/components/Footer.tsx` and `Footer.module.css`:
-  - The page footer component.
-  - Displays supporting links and site attribution.
+### Frontend
 
-### Detection flow
+Deploy the `frontend` directory with any Next.js-compatible hosting provider. Ensure `NEXT_PUBLIC_API_URL` points to the live backend.
 
-- `app/detect/page.tsx`:
-  - The detection form page.
-  - Uses React client-side state to collect job details.
-  - Submits job data and redirects to the results page.
+---
 
-- `app/result/page.tsx`:
-  - Displays the prediction outcome.
-  - Reads query parameters to show summary information.
+## 🧩 Notes
 
-- `app/result/result.module.css`:
-  - Styles for the result page layout and visual states.
+- The frontend is a stateless UI layer and depends on the backend for prediction logic.
+- The backend currently allows all CORS origins for convenience; tighten this for production.
+- The model is trained on the `fake_job_postings.csv` dataset in the `backend/training` folder.
 
-### Shared utilities
+---
 
-- `lib/api.ts`:
-  - Defines TypeScript types for job form data and prediction results.
-  - Implements the `detectJob()` helper that sends a POST request to the backend prediction API.
+## 📌 Useful commands
 
-### `public/`
+### Frontend
 
-- Stores static assets served by the app.
-- Common contents include icons, images, and other public files.
+```bash
+cd frontend
+npm install
+npm run dev
+npm run build
+npm start
+npm run lint
+```
 
-## How the Frontend Works
+### Backend
 
-1. The homepage introduces the product and drives users to the detection flow.
-2. The `/detect` page collects job posting details from the user.
-3. The app sends the payload to a backend prediction endpoint.
-4. The `/result` page shows whether the posting is likely `fake` or `real`, along with a confidence score.
+```bash
+cd backend
+python -m pip install -r requirements.txt
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+python training/train.py
+```
 
-## Recommended VS Code Setup
+---
 
-For the best development experience, install these VS Code extensions:
+## 📝 License
 
-- **ESLint**: linting and code quality checks.
-- **Prettier**: consistent formatting.
-- **TypeScript**: improved autocomplete and type checking.
+This project is intended for educational and demonstration purposes. Add your preferred license file if you want to publish it publicly.
 
-## Notes
+---
 
-- This project is built using **Next.js 16** with the **App Router**.
-- The frontend is purely a presentation layer; it depends on an external backend for the actual fake-job prediction logic.
-- Keep `NEXT_PUBLIC_API_URL` pointed at a running prediction service to avoid API failures.
+## 🙌 Contributors
+
+- `frontend/` contains the user interface, interaction flow, and visual design
+- `backend/` contains the API server and ML inference logic
+- `backend/training/` contains the model training and evaluation pipeline
