@@ -6,7 +6,7 @@ A complete full-stack application for identifying fraudulent job listings using 
 
 ## 🌐 Live Demo
 
-**Frontend (Vercel):** [https://fake-job-posting-detector-two.vercel.app/](https://fake-job-posting-detector-two.vercel.app/)
+**Frontend (Vercel):** [https://fake-job-posting-detector-mu.vercel.app/](https://fake-job-posting-detector-mu.vercel.app/)
 
 **Backend API (Render):** [https://fake-job-posting-detector-tn3a.onrender.com](https://fake-job-posting-detector-tn3a.onrender.com)
 
