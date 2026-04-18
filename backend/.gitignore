@@ -1,5 +1,36 @@
+# Virtual environment
 venv/
 __pycache__/
 *.pyc
-training/fake_job_postings.csv
+*.pyo
+*.pyd
+.Python
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
 .env
+.env.local
+
+# Data files (keep model.pkl, exclude CSV)
+training/fake_job_postings.csv
+results/
+*.xlsx
+*.csv
+
+# PyCharm
+*.iml
+.pytest_cache/
+.mypy_cache/
+dist/
+build/
+*.egg-info/
