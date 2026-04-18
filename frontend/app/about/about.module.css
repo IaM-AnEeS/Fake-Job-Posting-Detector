@@ -1,0 +1,363 @@
+.page {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 48px 20px 64px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding-bottom: 48px;
+}
+
+.badge {
+  display: inline-block;
+  background: #eaf3de;
+  border: 1px solid #c0dd97;
+  border-radius: 20px;
+  padding: 5px 16px;
+  font-size: 13px;
+  color: #3b6d11;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* Sections */
+.section {
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 20px;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 14px;
+}
+
+.sectionText {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.8;
+}
+
+/* Stats */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.statCard {
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  padding: 20px 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.statNum {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.statLabel {
+  font-size: 12px;
+  color: #888;
+  line-height: 1.4;
+}
+
+/* Pipeline */
+.pipeline {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.pipeStep {
+  flex: 1;
+  min-width: 180px;
+  background: #f5f5f5;
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.pipeNum {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #e24b4a;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.pipeTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+}
+
+.pipeDesc {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.pipeArrow {
+  font-size: 20px;
+  color: #ccc;
+  padding-top: 28px;
+  flex-shrink: 0;
+}
+
+/* Signals */
+.signalsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.signalCard {
+  background: #f5f5f5;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.signalHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.signalDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dotFake { background: #e24b4a; }
+.dotReal { background: #639922; }
+
+.signalTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.signalList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.signalList li {
+  font-size: 13px;
+  color: #555;
+  padding-left: 14px;
+  position: relative;
+  line-height: 1.4;
+}
+
+.signalList li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: #aaa;
+}
+
+/* Dataset */
+.datasetCard {
+  background: #f5f5f5;
+  border-radius: 12px;
+  margin-top: 16px;
+  overflow: hidden;
+}
+
+.datasetRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  border-bottom: 1px solid #e8e8e8;
+  font-size: 14px;
+}
+
+.datasetRow:last-child {
+  border-bottom: none;
+}
+
+.datasetKey {
+  color: #888;
+  font-weight: 500;
+}
+
+.datasetVal {
+  color: #1a1a1a;
+  font-weight: 500;
+}
+
+/* Tech stack */
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.techCard {
+  background: #f5f5f5;
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.techLayer {
+  font-size: 12px;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
+}
+
+.techItems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.techItem {
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 6px;
+  padding: 4px 10px;
+}
+
+/* Disclaimer */
+.disclaimer {
+  background: #faeeda;
+  border: 1px solid #ef9f27;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.disclaimerTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #633806;
+  margin-bottom: 8px;
+}
+
+.disclaimerText {
+  font-size: 14px;
+  color: #854f0b;
+  line-height: 1.7;
+}
+
+/* CTA */
+.cta {
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+}
+
+.ctaTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.ctaSub {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.ctaBtn {
+  display: inline-block;
+  background: #e24b4a;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 13px 32px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.ctaBtn:hover {
+  background: #c93a39;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pipeline {
+    flex-direction: column;
+  }
+
+  .pipeArrow {
+    transform: rotate(90deg);
+    padding-top: 0;
+    align-self: center;
+  }
+
+  .signalsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .techGrid {
+    grid-template-columns: 1fr;
+  }
+}
