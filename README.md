@@ -198,7 +198,7 @@ NEXT_PUBLIC_API_URL=http://localhost:8000
 
 The application is currently deployed and running on:
 
-- **Frontend:** Vercel ([https://fake-job-posting-detector-mu.vercel.app/](https://fake-job-posting-detector-two.vercel.app/))
+- **Frontend:** Vercel ([https://fake-job-posting-detector-mu.vercel.app/](https://fake-job-posting-detector-mu.vercel.app/))
 - **Backend:** Render ([https://fake-job-posting-detector-tn3a.onrender.com](https://fake-job-posting-detector-tn3a.onrender.com))
 
 ### API Endpoints
