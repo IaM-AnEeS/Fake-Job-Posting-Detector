@@ -4,6 +4,16 @@ A complete full-stack application for identifying fraudulent job listings using 
 
 ---
 
+## 🌐 Live Demo
+
+**Frontend (Vercel):** [https://fake-job-posting-detector-two.vercel.app/](https://fake-job-posting-detector-two.vercel.app/)
+
+**Backend API (Render):** [https://fake-job-posting-detector-tn3a.onrender.com](https://fake-job-posting-detector-tn3a.onrender.com)
+
+**API Documentation:** [https://fake-job-posting-detector-tn3a.onrender.com/docs](https://fake-job-posting-detector-tn3a.onrender.com/docs)
+
+---
+
 ## 🚀 Project Overview
 
 Fake Job Detector helps users verify job postings by analyzing title, company details, salary, description, requirements, and benefits. The frontend collects user input and displays a polished verdict, while the backend powers the prediction with an ML model trained on real and fake job postings.
@@ -142,21 +152,29 @@ backend/model/model.pkl
 
 ## 💻 Local Development
 
-### 1. Start the backend
+### Prerequisites
+
+- Node.js 18+ and npm
+- Python 3.8+ and pip
+
+### 1. Clone and setup
+
+```bash
+git clone <repository-url>
+cd fake-job-detector
+```
+
+### 2. Start the backend locally
 
 ```bash
 cd backend
-python -m pip install -r requirements.txt
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
+pip install -r requirements.txt
+python main.py
 ```
 
-Verify backend:
+The backend will run at `http://localhost:8000`
 
-```bash
-curl http://localhost:8000/health
-```
-
-### 2. Start the frontend
+### 3. Start the frontend locally
 
 ```bash
 cd frontend
@@ -164,13 +182,9 @@ npm install
 npm run dev
 ```
 
-Open the app at:
+Open the app at `http://localhost:3000`
 
-```bash
-http://localhost:3000
-```
-
-### 3. Configure backend URL
+### 4. Configure backend URL (for local development)
 
 Create `frontend/.env.local` with:
 
@@ -178,7 +192,20 @@ Create `frontend/.env.local` with:
 NEXT_PUBLIC_API_URL=http://localhost:8000
 ```
 
-> The frontend uses `NEXT_PUBLIC_API_URL` to route prediction requests to the backend.
+---
+
+## 🚀 Deployment
+
+The application is currently deployed and running on:
+
+- **Frontend:** Vercel ([https://fake-job-posting-detector-two.vercel.app/](https://fake-job-posting-detector-two.vercel.app/))
+- **Backend:** Render ([https://fake-job-posting-detector-tn3a.onrender.com](https://fake-job-posting-detector-tn3a.onrender.com))
+
+### API Endpoints
+
+- **Health Check:** [https://fake-job-posting-detector-tn3a.onrender.com/health](https://fake-job-posting-detector-tn3a.onrender.com/health)
+- **Prediction:** [https://fake-job-posting-detector-tn3a.onrender.com/predict](https://fake-job-posting-detector-tn3a.onrender.com/predict)
+- **Interactive Docs:** [https://fake-job-posting-detector-tn3a.onrender.com/docs](https://fake-job-posting-detector-tn3a.onrender.com/docs)
 
 ---
 
