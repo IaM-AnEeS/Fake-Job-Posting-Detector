@@ -244,7 +244,7 @@ python training/train.py
 
 ## 📝 License
 
-This project is intended for educational and demonstration purposes. Add your preferred license file if you want to publish it publicly.
+This project is intended for educational and demonstration purposes.
 
 ---
 
