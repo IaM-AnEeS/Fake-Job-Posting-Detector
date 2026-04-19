@@ -6,9 +6,9 @@ A complete full-stack application for identifying fraudulent job listings using 
 
 ## 🌐 Live Demo
 
-**Frontend (Vercel):** [https://fake-job-posting-detector-mu.vercel.app/](https://fake-job-posting-detector-mu.vercel.app/)
+**Frontend (Vercel):** [https://fake-job-posting-detector-psi.vercel.app/](https://fake-job-posting-detector-psi.vercel.app/)
 
-**Backend API (Render):** [https://fake-job-posting-detector-tn3a.onrender.com](https://fake-job-posting-detector-tn3a.onrender.com)
+**Backend API (Render):** [https://fake-job-posting-detector-q82v.onrender.com/](https://fake-job-posting-detector-q82v.onrender.com/)
 
 **Medium Article:** [https://fake-job-posting-detector-tn3a.onrender.com/docs](https://fake-job-posting-detector-tn3a.onrender.com/docs)
 
@@ -200,8 +200,8 @@ NEXT_PUBLIC_API_URL=http://localhost:8000
 
 The application is currently deployed and running on:
 
-- **Frontend:** Vercel ([https://fake-job-posting-detector-mu.vercel.app/](https://fake-job-posting-detector-mu.vercel.app/))
-- **Backend:** Render ([https://fake-job-posting-detector-tn3a.onrender.com](https://fake-job-posting-detector-tn3a.onrender.com))
+- **Frontend:** Vercel ([https://fake-job-posting-detector-psi.vercel.app/](https://fake-job-posting-detector-psi.vercel.app/))
+- **Backend:** Render ([https://fake-job-posting-detector-q82v.onrender.com/](https://fake-job-posting-detector-q82v.onrender.com))
 
 ### API Endpoints
 
