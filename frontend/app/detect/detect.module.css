@@ -324,3 +324,264 @@
     width: 100%;
   }
 }
+/* URL Scanner */
+.urlSection {
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 14px;
+  padding: 22px 24px;
+  margin-bottom: 20px;
+}
+
+.urlHeader {
+  margin-bottom: 14px;
+}
+
+.urlTitleRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.urlIconBox {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #1a1a1a;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.urlTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 3px;
+}
+
+.urlSubtitle {
+  font-size: 13px;
+  color: #888;
+  line-height: 1.5;
+}
+
+.urlRow {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.urlInput {
+  flex: 1;
+  padding: 11px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #1a1a1a;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.urlInput:focus {
+  border-color: #378add;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(55, 138, 221, 0.12);
+}
+
+.urlInput:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.urlInput::placeholder {
+  color: #bbb;
+}
+
+.urlBtn {
+  background: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, opacity 0.2s;
+  min-width: 110px;
+}
+
+.urlBtn:hover:not(:disabled) {
+  background: #333;
+}
+
+.urlBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.urlErrorBox {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: #fcebeb;
+  border: 1px solid #f09595;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #a32d2d;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.urlErrorIcon {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #e24b4a;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.urlSuccessBox {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: #eaf3de;
+  border: 1px solid #c0dd97;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #3b6d11;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.urlNote {
+  font-size: 12px;
+  color: #bbb;
+  margin-top: 4px;
+}
+
+/* Divider between URL and manual form */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e8e8e8;
+}
+
+.dividerText {
+  font-size: 12px;
+  color: #aaa;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+/* Field hint text */
+.fieldHint {
+  font-size: 11px;
+  color: #bbb;
+  margin-top: 5px;
+  line-height: 1.4;
+}
+
+/* Dark spinner for URL button */
+.spinnerDark {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+/* ── NEW BADGE on website label ─────────────────── */
+.newBadge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 7px;
+  background: #e8f4e8;
+  color: #3B6D11;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border-radius: 20px;
+  text-transform: uppercase;
+  vertical-align: middle;
+  border: 1px solid #c6e3c6;
+}
+ 
+/* ── Layer 5 info card ──────────────────────────── */
+.verifyCard {
+  margin-top: 8px;
+  padding: 16px 18px;
+  background: #f7fbf4;
+  border: 1px solid #d4eacc;
+  border-radius: 10px;
+}
+ 
+.verifyCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #3B6D11;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+ 
+.verifyCardText {
+  font-size: 12.5px;
+  color: #555;
+  margin: 0 0 10px 0;
+  line-height: 1.5;
+}
+ 
+.verifyCardList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+ 
+.verifyCardList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12.5px;
+  color: #444;
+  line-height: 1.45;
+}
+ 
+.verifyDot {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #5a9e2f;
+  margin-top: 5px;
+}

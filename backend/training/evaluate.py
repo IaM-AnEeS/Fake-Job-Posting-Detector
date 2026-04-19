@@ -16,8 +16,8 @@ from sklearn.metrics import (
     confusion_matrix
 )
 
-DATA_PATH  = 'training/fake_job_postings.csv'
-MODEL_PATH = 'model/model.pkl'
+DATA_PATH  = os.path.join(os.path.dirname(__file__), 'fake_job_postings.csv')
+MODEL_PATH = os.path.join(os.path.dirname(__file__), '..', 'model', 'model.pkl')
 
 TEXT_COLUMNS = [
     'title', 'company_profile', 'description',
@@ -48,7 +48,7 @@ def load_data():
 def build_features(df):
     print("Building features...")
     df['combined_text'] = df[TEXT_COLUMNS].apply(
-        lambda row: ' '.join([clean_text(v) for v in row]),
+        lambda row: ' '.join(clean_text(str(v)) for v in row.values if pd.notna(v)),
         axis=1
     )
     return df['combined_text'], df['fraudulent']
