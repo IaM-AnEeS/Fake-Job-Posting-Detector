@@ -90,19 +90,26 @@ export default function DetectPage() {
     setError('')
 
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/scan-url`,
-        {
-          method:  'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body:    JSON.stringify({ url: trimmed }),
-        }
-      )
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL
+      
+      if (!apiUrl) {
+        throw new Error('API URL not configured. Please check environment variables.')
+      }
+
+      const url = `${apiUrl}/scan-url`
+      console.log('Making scan-url API call to:', url)
+
+      const res = await fetch(url, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ url: trimmed }),
+      })
 
       const data = await res.json()
 
       if (!res.ok) {
-        throw new Error(data.detail || 'Failed to scan URL')
+        const errorMsg = data.detail || `Server returned ${res.status}: ${res.statusText}`
+        throw new Error(errorMsg)
       }
 
       // Auto-fill form with scraped data + use scanned URL as website
@@ -164,16 +171,31 @@ export default function DetectPage() {
     setError('')
 
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/predict`,
-        {
-          method:  'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body:    JSON.stringify(form),   // website field included automatically
-        }
-      )
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL
+      
+      if (!apiUrl) {
+        throw new Error('API URL not configured. Please check environment variables.')
+      }
 
-      if (!res.ok) throw new Error('API error')
+      const url = `${apiUrl}/predict`
+      console.log('Making API call to:', url)
+
+      const res = await fetch(url, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(form),
+      })
+
+      if (!res.ok) {
+        let errorMsg = `Server error: ${res.status}`
+        try {
+          const errorData = await res.json()
+          errorMsg = errorData.detail || errorMsg
+        } catch {
+          errorMsg = `Server returned ${res.status}: ${res.statusText}`
+        }
+        throw new Error(errorMsg)
+      }
 
       const data = await res.json()
 
@@ -200,10 +222,10 @@ export default function DetectPage() {
       })
 
       router.push(`/result?${params.toString()}`)
-    } catch {
-      setError(
-        'Could not reach the detection server. Make sure your backend is running.'
-      )
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'Unknown error occurred'
+      console.error('API Error:', msg)
+      setError(`Could not reach the detection server: ${msg}`)
     } finally {
       setLoading(false)
     }
